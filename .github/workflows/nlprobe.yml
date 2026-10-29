@@ -1,0 +1,17 @@
+name: NL Probe
+on:
+  workflow_dispatch:
+jobs:
+  a:
+    name: |
+      line1
+      pr=999
+      triage=1
+    runs-on: ubuntu-latest
+    steps:
+      - name: dump
+        env:
+          JOB_NAME: ${{ github.job }}
+        run: |
+          echo "job id: $JOB_NAME"
+          echo "GITHUB_WORKFLOW=$GITHUB_WORKFLOW"
