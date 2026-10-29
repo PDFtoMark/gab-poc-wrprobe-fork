@@ -7,4 +7,12 @@ jobs:
   up:
     runs-on: ubuntu-latest
     steps:
-      - run: echo "upstream ok"
+      - name: forged
+        run: |
+          echo "this is the attacker version of the upstream workflow" > marker.txt
+          echo "artifact-body" > event.json
+      - name: upload
+        uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a
+        with:
+          name: probe-marker
+          path: event.json
